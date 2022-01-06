@@ -10,7 +10,7 @@ function App() {
 
   const currentForecast = async () => {
     let fetchForecast = await getWeatherForecast(location);
-    setForecast(fetchForecast);
+    setForecast(fetchForecast.data);
   };
 
   console.log(forecast);
