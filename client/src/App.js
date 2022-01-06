@@ -4,7 +4,7 @@ import { getWeatherForecast } from "./Services/api-config";
 import { locationURLParse } from "./Util/locationUrlParse";
 
 function App() {
-  const [selectedWeather, setSelectedWeather] = useState({});
+  const [selectedWeatherInfo, setSelectedWeatherInfo] = useState({});
   const [forecast, setForecast] = useState([]);
   const [location, setLocation] = useState("");
 
