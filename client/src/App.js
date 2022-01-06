@@ -5,7 +5,7 @@ import { locationURLParse } from "./Util/locationUrlParse";
 import SelectedWeather from "./Components/SelectedWeather/SelectedWeather";
 
 function App() {
-  const [selectedDay, setSelectedDay] = useState(1);
+  const [selectedDay, setSelectedDay] = useState(0);
   const [forecast, setForecast] = useState([]);
   const [location, setLocation] = useState("");
 
