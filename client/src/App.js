@@ -2,9 +2,10 @@ import "./App.css";
 import { useState } from "react";
 import { getWeatherForecast } from "./Services/api-config";
 import { locationURLParse } from "./Util/locationUrlParse";
+import SelectedWeather from "./Components/SelectedWeather/SelectedWeather";
 
 function App() {
-  const [selectedDay, setSelectedDay] = useState(0);
+  const [selectedDay, setSelectedDay] = useState(1);
   const [forecast, setForecast] = useState([]);
   const [location, setLocation] = useState("");
 
@@ -12,8 +13,6 @@ function App() {
     let fetchForecast = await getWeatherForecast(location);
     setForecast(fetchForecast.data);
   };
-
-  console.log(forecast);
 
   return (
     <div className="App">
@@ -33,6 +32,7 @@ function App() {
         </label>
         <button type="submit">Submit</button>
       </form>
+      <SelectedWeather weatherInfo={forecast} selectedDay={selectedDay} />
     </div>
   );
 }

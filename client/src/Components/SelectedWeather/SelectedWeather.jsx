@@ -5,7 +5,7 @@ const SelectedWeather = ({ weatherInfo, selectedDay }) => {
   const currentDay = (
     <div>
       <div>
-        <h2>{`${weatherInfo.current.temp_f}°`}</h2>
+        <h1>{`${weatherInfo.current.temp_f}°`}</h1>
       </div>
       <div>
         <h4>Feels like</h4>
@@ -20,7 +20,7 @@ const SelectedWeather = ({ weatherInfo, selectedDay }) => {
   const futureDay = (
     <div>
       <div>
-        <h2>{`${weatherInfo.forecast.forecastday[selectedDay].day.avgtemp_f}°`}</h2>
+        <h1>{`${weatherInfo.forecast.forecastday[selectedDay].day.avgtemp_f}°`}</h1>
       </div>
       <div>
         <div>
@@ -43,7 +43,7 @@ const SelectedWeather = ({ weatherInfo, selectedDay }) => {
       <div>
         <h1>{weatherInfo.location.name}</h1>
         <h2>
-          {dateFormatter(weatherInfo.forecast.forecastday[selectedDay].date)}
+          {dateFormatter(`${weatherInfo.forecast.forecastday[selectedDay].date}`)}
         </h2>
       </div>
       {selectedDay == 0 ? currentDay : futureDay}
