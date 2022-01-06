@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const domain = "http://api.weatherapi.com/v1";
-const apiKey = process.env.REACT_APP_API_KEY;
+const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
 
 export const getWeatherForecast = async (location) => {
   const weatherResp = await axios.get(
-    `${domain}/forecast.json?key=${apiKey}q=${location}`
+    `${domain}/forecast.json?key=${apiKey}&q=${location}`
   );
   return weatherResp;
 };
