@@ -1,6 +1,8 @@
 //changes the dashes into slashes.
 
 export const dateFormatter = (date) => {
-    date.replace("-", "/") 
+    while(date.includes("-")){
+        date = date.replace("-", "/")
+    }
     return date;
 }
