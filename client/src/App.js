@@ -3,6 +3,7 @@ import { useState } from "react";
 import { getWeatherForecast } from "./Services/api-config";
 import { locationURLParse } from "./Util/locationUrlParse";
 import SelectedWeather from "./Components/SelectedWeather/SelectedWeather";
+import ForecastList from "./Components/ForecastList/ForecastList";
 
 function App() {
   const [selectedDay, setSelectedDay] = useState(0);
@@ -12,6 +13,10 @@ function App() {
   const currentForecast = async () => {
     let fetchForecast = await getWeatherForecast(location);
     setForecast(fetchForecast.data);
+  };
+
+  const handleIndex = (index) => {
+    setSelectedDay(index);
   };
 
   return (
@@ -33,6 +38,7 @@ function App() {
         <button type="submit">Submit</button>
       </form>
       <SelectedWeather weatherInfo={forecast} selectedDay={selectedDay} />
+      <ForecastList weatherInfo={forecast} setSelectedDay={handleIndex} />
     </div>
   );
 }
