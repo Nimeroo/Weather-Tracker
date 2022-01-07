@@ -1,9 +1,9 @@
 import "./App.css";
 import { useState } from "react";
 import { getWeatherForecast } from "./Services/api-config";
-import { locationURLParse } from "./Util/locationUrlParse";
-import SelectedWeather from "./Components/SelectedWeather/SelectedWeather";
-import ForecastList from "./Components/ForecastList/ForecastList";
+import Main from "./Screens/Main/Main";
+import Landing from "./Screens/Landing/Landing";
+
 
 function App() {
   const [selectedDay, setSelectedDay] = useState(0);
@@ -19,26 +19,25 @@ function App() {
     setSelectedDay(index);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    currentForecast();
+  };
+
+  const handleLocation = (input) => {
+    setLocation(input);
+  };
+
   return (
     <div className="App">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          currentForecast();
-        }}
-      >
-        <label>
-          <input
-            onChange={(e) => {
-              setLocation(locationURLParse(e.target.value));
-            }}
-            placeholder="Enter your location"
-          ></input>
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-      <SelectedWeather weatherInfo={forecast} selectedDay={selectedDay} />
-      <ForecastList weatherInfo={forecast} setSelectedDay={handleIndex} />
+      <Landing handleSubmit={handleSubmit} handleLocation={handleLocation}/>
+      <Main
+        handleSubmit={handleSubmit}
+        handleLocation={handleLocation}
+        forecast={forecast}
+        selectedDay={selectedDay}
+        handleIndex={handleIndex}
+      />
     </div>
   );
 }
