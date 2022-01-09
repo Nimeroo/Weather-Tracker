@@ -20,8 +20,8 @@ function App() {
   };
 
   const handleSubmit = (e) => {
-      e.preventDefault();
-      currentForecast();
+    e.preventDefault();
+    currentForecast();
   };
 
   const handleLocation = (input) => {
