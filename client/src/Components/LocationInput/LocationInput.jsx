@@ -1,9 +1,17 @@
 import React from "react";
 import { locationURLParse } from "../../Util/locationUrlParse.js";
+import { useNavigate } from "react-router-dom";
 
 const LocationInput = ({ handleSubmit, handleLocation }) => {
+  const navigate = useNavigate();
+
   return (
-    <form onSubmit={(e) => {handleSubmit(e)}}>
+    <form
+      onSubmit={(e) => {
+        handleSubmit(e);
+        navigate("/main");
+      }}
+    >
       <label>
         <input
           onChange={(e) => {
