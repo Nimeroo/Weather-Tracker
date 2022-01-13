@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 const LocationInput = ({ handleSubmit, handleLocation }) => {
   const navigate = useNavigate();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <form
       onSubmit={(e) => {
