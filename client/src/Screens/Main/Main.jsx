@@ -1,6 +1,7 @@
 import SelectedWeather from "../../Components/SelectedWeather/SelectedWeather";
 import ForecastList from "../../Components/ForecastList/ForecastList";
 import LocationInput from "../../Components/LocationInput/LocationInput";
+import WeatherDetails from "../../Components/WeatherDetails/WeatherDetails";
 
 const Main = ({
   forecast,
@@ -19,7 +20,9 @@ const Main = ({
         handleSubmit={handleSubmit}
         handleLocation={handleLocation}
       />
-      <SelectedWeather weatherInfo={forecast} selectedDay={selectedDay} />
+      <WeatherDetails weatherInfo={forecast} selectedDay={selectedDay}>
+        <SelectedWeather weatherInfo={forecast} selectedDay={selectedDay} />
+      </WeatherDetails>
       <ForecastList weatherInfo={forecast} setSelectedDay={handleIndex} />
     </div>
   );

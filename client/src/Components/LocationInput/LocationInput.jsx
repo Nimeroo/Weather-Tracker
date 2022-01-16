@@ -2,8 +2,12 @@ import React from "react";
 import { locationURLParse } from "../../Util/locationUrlParse.js";
 import { useNavigate } from "react-router-dom";
 
-const LocationInput = ({ handleSubmit, handleLocation }) => {
+const LocationInput = ({ handleLocation }) => {
   const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <form
