@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getWeatherForecast } from "./Services/api-config";
 import Main from "./Screens/Main/Main";
 import Landing from "./Screens/Landing/Landing";
@@ -10,18 +10,18 @@ function App() {
   const [forecast, setForecast] = useState({});
   const [location, setLocation] = useState("");
 
-  const currentForecast = async () => {
-    let fetchForecast = await getWeatherForecast(location);
-    setForecast(fetchForecast.data);
-  };
+  useEffect(() => {
+    const fetchForecast = async () => {
+      const currentForecast = await getWeatherForecast(location);
+      if (currentForecast) {
+        setForecast(currentForecast.data);
+      }
+    };
+    fetchForecast();
+  }, [location]);
 
   const handleIndex = (index) => {
     setSelectedDay(index);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    currentForecast();
   };
 
   const handleLocation = (input) => {
@@ -34,18 +34,12 @@ function App() {
         <Route
           exact
           path="/"
-          element={
-            <Landing
-              handleSubmit={handleSubmit}
-              handleLocation={handleLocation}
-            />
-          }
+          element={<Landing handleLocation={handleLocation} />}
         />
         <Route
           path="/main"
           element={
             <Main
-              handleSubmit={handleSubmit}
               handleLocation={handleLocation}
               forecast={forecast}
               selectedDay={selectedDay}
