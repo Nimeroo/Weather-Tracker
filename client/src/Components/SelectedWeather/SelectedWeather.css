@@ -1,3 +1,16 @@
 #main-weather-cont{
-    width: 50%;
+    width: 40%;
+}
+
+#city-date-cont{
+    text-align: left;
+}
+
+.temp-details-cont{
+    text-align: right;
+}
+
+.weather-condition-cont{
+    display: flex;
+    justify-content: end;
 }
