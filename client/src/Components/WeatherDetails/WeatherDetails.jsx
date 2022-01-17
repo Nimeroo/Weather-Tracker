@@ -8,7 +8,7 @@ const WeatherDetails = ({ children, weatherInfo, selectedDay }) => {
     <div id="selected-weather-cont">
       <div className="weather-details">
         <div>
-          <h3>{`Wind speed: ${specifiedDay.maxwind_mph}`}</h3>
+          <h3>{`Wind speed: ${specifiedDay.maxwind_mph} mph`}</h3>
         </div>
         <div>
           <h3>{`Chance of rain: ${specifiedDay.daily_chance_of_rain}%`}</h3>
