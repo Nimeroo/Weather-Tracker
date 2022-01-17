@@ -1,5 +1,6 @@
 import "./SelectedWeather.css"
 import React from "react";
+import { Paper } from "@mui/material";
 import { dateFormatter } from "../../Util/dateFormatter";
 
 const SelectedWeather = ({ weatherInfo, selectedDay }) => {
@@ -39,7 +40,7 @@ const SelectedWeather = ({ weatherInfo, selectedDay }) => {
   );
 
   return (
-    <div id="main-weather-cont">
+    <Paper elevation={24} id="main-weather-cont">
       <div id="city-date-cont">
         <h1>{weatherInfo.location.name}</h1>
         <h4>
@@ -47,7 +48,7 @@ const SelectedWeather = ({ weatherInfo, selectedDay }) => {
         </h4>
       </div>
       {selectedDay == 0 ? currentDay : futureDay}
-    </div>
+    </Paper>
   );
 };
 
