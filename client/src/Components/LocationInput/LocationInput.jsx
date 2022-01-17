@@ -1,4 +1,6 @@
+import "./LocationInput.css";
 import React from "react";
+import { TextField } from "@mui/material";
 import { locationURLParse } from "../../Util/locationUrlParse.js";
 import { useNavigate } from "react-router-dom";
 
@@ -10,22 +12,23 @@ const LocationInput = ({ handleLocation }) => {
   };
 
   return (
-    <form
-      onSubmit={(e) => {
-        handleSubmit(e);
-        navigate("/main");
-      }}
-    >
-      <label>
-        <input
+    <div id="form-cont">
+      <form
+        onSubmit={(e) => {
+          handleSubmit(e);
+          navigate("/main");
+        }}
+      >
+        <TextField
+          fullWidth
           onChange={(e) => {
             handleLocation(locationURLParse(e.target.value));
           }}
-          placeholder="Enter your location"
-        ></input>
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+          label="Enter your location"
+        ></TextField>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 };
 
