@@ -1,3 +1,4 @@
+import "./SelectedWeather.css"
 import React from "react";
 import { dateFormatter } from "../../Util/dateFormatter";
 
@@ -39,7 +40,7 @@ const SelectedWeather = ({ weatherInfo, selectedDay }) => {
   );
 
   return (
-    <div>
+    <div id="main-weather-cont">
       <div>
         <h1>{weatherInfo.location.name}</h1>
         <h2>
