@@ -1,3 +1,4 @@
+import "./ForecastList.css"
 import react from "react";
 import { dateFormatter } from "../../Util/dateFormatter";
 
@@ -5,7 +6,7 @@ const ForecastList = ({ weatherInfo, setSelectedDay }) => {
   return (
     //Indices are hard coded in due to there only needing to be 3 items in the list and the first item must be treated differently
 
-    <div>
+    <div id="forecast-list">
       <div
         onClick={() => setSelectedDay(0)}
         src={weatherInfo.current.condition.icon}

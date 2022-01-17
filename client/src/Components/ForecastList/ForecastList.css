@@ -1,0 +1,9 @@
+#forecast-list{
+    display: flex;
+    justify-content: center;
+}
+
+#forecast-list>*{
+    text-align: center;
+    margin: 5em;
+}
