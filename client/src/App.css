@@ -5,9 +5,27 @@
 }
 
 html{
-  background-color: gray;
+  height: 100%;
+
+}
+
+body{
+  height: inherit;
+  background-color: lightgray;
+}
+
+root{
+  height: 100%;
 }
 
 .App {
+  height: inherit;
   text-align: center;
+}
+
+#main-cont{
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
