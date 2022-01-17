@@ -1,0 +1,18 @@
+#forecast-list{
+    display: flex;
+    justify-content: center;
+}
+
+#forecast-list>*{
+    background-color: gray;
+    text-align: center;
+    padding: 1em;
+    margin: 5em;
+}
+
+#forecast-list>*:hover{
+    background-color: lightsteelblue;
+    color: white;
+    transition: 1s;
+    cursor: pointer;
+}

@@ -1,3 +1,4 @@
+import "./Main.css";
 import SelectedWeather from "../../Components/SelectedWeather/SelectedWeather";
 import ForecastList from "../../Components/ForecastList/ForecastList";
 import LocationInput from "../../Components/LocationInput/LocationInput";
@@ -15,7 +16,7 @@ const Main = ({
   }
 
   return (
-    <div>
+    <div id="data-cont">
       <LocationInput
         handleSubmit={handleSubmit}
         handleLocation={handleLocation}

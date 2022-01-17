@@ -1,0 +1,24 @@
+#main-weather-cont{
+    background-color: lightsteelblue;
+    width: 40%;
+    height: 20em;
+    padding: 2em;
+}
+
+#main-weather-cont:hover{
+    color: white;
+    transition: 1s;
+}
+
+#city-date-cont{
+    text-align: left;
+}
+
+.temp-details-cont{
+    text-align: right;
+}
+
+.weather-condition-cont{
+    display: flex;
+    justify-content: end;
+}

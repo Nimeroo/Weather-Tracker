@@ -30,24 +30,27 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route
-          exact
-          path="/"
-          element={<Landing handleLocation={handleLocation} />}
-        />
-        <Route
-          path="/main"
-          element={
-            <Main
-              handleLocation={handleLocation}
-              forecast={forecast}
-              selectedDay={selectedDay}
-              handleIndex={handleIndex}
-            />
-          }
-        />
-      </Routes>
+      <h1>Weather Tracker</h1>
+      <div id="main-cont">
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={<Landing handleLocation={handleLocation} />}
+          />
+          <Route
+            path="/main"
+            element={
+              <Main
+                handleLocation={handleLocation}
+                forecast={forecast}
+                selectedDay={selectedDay}
+                handleIndex={handleIndex}
+              />
+            }
+          />
+        </Routes>
+      </div>
     </div>
   );
 }

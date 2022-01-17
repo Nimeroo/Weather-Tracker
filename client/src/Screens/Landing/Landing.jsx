@@ -1,11 +1,12 @@
-import LocationInput from "../../Components/LocationInput/LocationInput"
+import "./Landing.css";
+import LocationInput from "../../Components/LocationInput/LocationInput";
 
-function Landing({handleSubmit, handleLocation}) {
-    return (
-        <div>
-            <LocationInput handleSubmit={handleSubmit} handleLocation={handleLocation}/>
-        </div>
-    )
+function Landing({ handleLocation }) {
+  return (
+    <div id="landing-cont">
+      <LocationInput handleLocation={handleLocation} />
+    </div>
+  );
 }
 
-export default Landing
+export default Landing;
