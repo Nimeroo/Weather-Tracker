@@ -31,24 +31,26 @@ function App() {
   return (
     <div className="App">
       <h1>Weather Tracker</h1>
-      <Routes>
-        <Route
-          exact
-          path="/"
-          element={<Landing handleLocation={handleLocation} />}
-        />
-        <Route
-          path="/main"
-          element={
-            <Main
-              handleLocation={handleLocation}
-              forecast={forecast}
-              selectedDay={selectedDay}
-              handleIndex={handleIndex}
-            />
-          }
-        />
-      </Routes>
+      <div id="main-cont">
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={<Landing handleLocation={handleLocation} />}
+          />
+          <Route
+            path="/main"
+            element={
+              <Main
+                handleLocation={handleLocation}
+                forecast={forecast}
+                selectedDay={selectedDay}
+                handleIndex={handleIndex}
+              />
+            }
+          />
+        </Routes>
+      </div>
     </div>
   );
 }
