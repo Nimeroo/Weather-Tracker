@@ -1,6 +1,7 @@
 import "./LocationInput.css";
 import React from "react";
-import { TextField } from "@mui/material";
+import { TextField, IconButton } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import { locationURLParse } from "../../Util/locationUrlParse.js";
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +27,9 @@ const LocationInput = ({ handleLocation }) => {
           }}
           label="Enter your location"
         ></TextField>
-        <button type="submit">Submit</button>
+        <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
+          <SearchIcon />
+        </IconButton>
       </form>
     </div>
   );
