@@ -9,17 +9,17 @@ const ForecastList = ({ weatherInfo, setSelectedDay }) => {
 
     <div id="forecast-list">
       <Paper elevation={10} onClick={() => setSelectedDay(0)}>
-        <h3>{dateFormatter(`${weatherInfo.forecast.forecastday[0].date}`)}</h3>
+        <h3 className="date">{dateFormatter(`${weatherInfo.forecast.forecastday[0].date}`)}</h3>
         <img src={weatherInfo.current.condition.icon}></img>
         <h4>{`${weatherInfo.current.temp_f} F°`}</h4>
       </Paper>
       <Paper elevation={10} onClick={() => setSelectedDay(1)}>
-        <h3>{dateFormatter(`${weatherInfo.forecast.forecastday[1].date}`)}</h3>
+        <h3 className="date">{dateFormatter(`${weatherInfo.forecast.forecastday[1].date}`)}</h3>
         <img src={weatherInfo.forecast.forecastday[1].day.condition.icon}></img>
         <h4>{`${weatherInfo.forecast.forecastday[1].day.avgtemp_f} F°`}</h4>
       </Paper>
       <Paper elevation={10} onClick={() => setSelectedDay(2)}>
-        <h3>{dateFormatter(`${weatherInfo.forecast.forecastday[2].date}`)}</h3>
+        <h3 className="date">{dateFormatter(`${weatherInfo.forecast.forecastday[2].date}`)}</h3>
         <img src={weatherInfo.forecast.forecastday[2].day.condition.icon}></img>
         <h4>{`${weatherInfo.forecast.forecastday[2].day.avgtemp_f} F°`}</h4>
       </Paper>
