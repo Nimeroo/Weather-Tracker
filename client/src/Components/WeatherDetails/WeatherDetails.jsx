@@ -16,7 +16,7 @@ const WeatherDetails = ({ children, weatherInfo, selectedDay }) => {
         </div>
       </div>
       {children}
-      <div className="weather-details">
+      <div id="left-weather-detail" className="weather-details">
         <div>
           <h3>{`Visibility: ${specifiedDay.avgvis_miles} miles`}</h3>
         </div>
