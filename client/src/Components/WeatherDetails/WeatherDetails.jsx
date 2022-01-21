@@ -1,8 +1,7 @@
 import "./WeatherDetails.css";
-import React from "react";
 
 const WeatherDetails = ({ children, weatherInfo, selectedDay }) => {
-  const specifiedDay = weatherInfo.forecast.forecastday[selectedDay].day;
+  const specifiedDay = weatherInfo.data.forecast.forecastday[selectedDay].day;
 
   return (
     <div id="selected-weather-cont">
