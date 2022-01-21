@@ -3,10 +3,10 @@ import { Paper } from "@mui/material";
 import { dateFormatter } from "../../Util/dateFormatter";
 
 const SelectedWeather = ({ weatherInfo, selectedDay }) => {
-  const specifiedDay = weatherInfo.data.forecast.forecastday[selectedDay].day;
+  const specifiedDay = weatherInfo.data.forecast.forecastday[selectedDay];
   const currentDay = weatherInfo.data.current;
 
-  const currentDay = (
+  const presentDay = (
     <div className="temp-details-cont">
       <div>
         <h1>{`${currentDay.temp_f} °F`}</h1>
@@ -24,19 +24,19 @@ const SelectedWeather = ({ weatherInfo, selectedDay }) => {
   const futureDay = (
     <div className="temp-details-cont">
       <div>
-        <h1>{`${specifiedDay.avgtemp_f} °F`}</h1>
+        <h1>{`${specifiedDay.day.avgtemp_f} °F`}</h1>
       </div>
       <div>
         <div>
-          <h3>{`High: ${specifiedDay.maxtemp_f} °F`}</h3>
+          <h3>{`High: ${specifiedDay.day.maxtemp_f} °F`}</h3>
         </div>
         <div>
-          <h3>{`Low: ${specifiedDay.mintemp_f} °F`}</h3>
+          <h3>{`Low: ${specifiedDay.day.mintemp_f} °F`}</h3>
         </div>
       </div>
       <div className="weather-condition-cont">
-        <img src={specifiedDay.condition.icon}></img>
-        <h3>{specifiedDay.condition.text}</h3>
+        <img src={specifiedDay.day.condition.icon}></img>
+        <h3>{specifiedDay.day.condition.text}</h3>
       </div>
     </div>
   );
@@ -47,11 +47,11 @@ const SelectedWeather = ({ weatherInfo, selectedDay }) => {
         <h1>{weatherInfo.data.location.name}</h1>
         <h4>
           {dateFormatter(
-            `${weatherInfo.data.forecast.forecastday[selectedDay].date}`
+            `${specifiedDay.date}`
           )}
         </h4>
       </div>
-      {selectedDay == 0 ? currentDay : futureDay}
+      {selectedDay == 0 ? presentDay : futureDay}
     </Paper>
   );
 };
