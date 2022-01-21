@@ -1,18 +1,40 @@
-#forecast-list{
-    display: flex;
-    justify-content: center;
+#forecast-list {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
-#forecast-list>*{
-    background-color: gray;
-    text-align: center;
-    padding: 1em;
-    margin: 5em;
+#forecast-list > * {
+  background-color: gray;
+  text-align: center;
+  padding: 1em;
+  margin: 5em;
 }
 
-#forecast-list>*:hover{
-    background-color: lightsteelblue;
-    color: white;
-    transition: 1s;
-    cursor: pointer;
+#forecast-list > *:hover {
+  background-color: lightsteelblue;
+  color: white;
+  transition: 1s;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  #forecast-list > * {
+    padding: 0em;
+    margin: 2em;
+    height: 12em;
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #forecast-list > * {
+    padding: 0em;
+    margin: 1em;
+    height: 12em;
+  }
+
+  .date {
+    font-size: 1em;
+  }
 }

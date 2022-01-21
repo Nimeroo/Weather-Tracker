@@ -14,7 +14,7 @@ function App() {
     const fetchForecast = async () => {
       const currentForecast = await getWeatherForecast(location);
       if (currentForecast) {
-        setForecast(currentForecast.data);
+        setForecast(currentForecast);
       }
     };
     fetchForecast();
@@ -36,7 +36,9 @@ function App() {
           <Route
             exact
             path="/"
-            element={<Landing handleLocation={handleLocation} />}
+            element={
+              <Landing forecast={forecast} handleLocation={handleLocation} />
+            }
           />
           <Route
             path="/main"

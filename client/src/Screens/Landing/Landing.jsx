@@ -1,10 +1,10 @@
 import "./Landing.css";
 import LocationInput from "../../Components/LocationInput/LocationInput";
 
-function Landing({ handleLocation }) {
+function Landing({ handleLocation, forecast }) {
   return (
     <div id="landing-cont">
-      <LocationInput handleLocation={handleLocation} />
+      <LocationInput forecast={forecast} handleLocation={handleLocation} />
     </div>
   );
 }
