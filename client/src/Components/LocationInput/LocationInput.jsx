@@ -5,13 +5,17 @@ import SearchIcon from "@mui/icons-material/Search";
 import { locationURLParse } from "../../Util/locationUrlParse.js";
 import { useNavigate } from "react-router-dom";
 
-const LocationInput = ({ handleLocation }) => {
+const LocationInput = ({ handleLocation, forecast }) => {
   const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSubmitted(true);
+    if (forecast.status === 200 && input) {
+      navigate("/main");
+    }
   };
 
   return (
@@ -19,8 +23,6 @@ const LocationInput = ({ handleLocation }) => {
       <form
         onSubmit={(e) => {
           handleSubmit(e);
-          input && navigate("/main");
-          setSubmitted(true)
         }}
       >
         <TextField
@@ -29,8 +31,17 @@ const LocationInput = ({ handleLocation }) => {
             handleLocation(locationURLParse(e.target.value));
             setInput(locationURLParse(e.target.value));
           }}
-          error={submitted && input === ""}
-          helperText={submitted && input === "" ? "Empty field!" : ""}
+          error={
+            (submitted && forecast.status !== 200) ||
+            (submitted && input === "")
+          }
+          helperText={
+            submitted && input === ""
+              ? "Empty field!"
+              : submitted && forecast.status !== 200
+              ? "That city does not exist"
+              : ""
+          }
           label="Enter your location"
         ></TextField>
         <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
