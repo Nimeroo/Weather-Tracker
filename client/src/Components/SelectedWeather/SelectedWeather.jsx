@@ -45,6 +45,7 @@ const SelectedWeather = ({ weatherInfo, selectedDay }) => {
     <Paper elevation={24} id="main-weather-cont">
       <div id="city-date-cont">
         <h1>{weatherInfo.data.location.name}</h1>
+        <h5>{weatherInfo.data.location.region}</h5>
         <h4>
           {dateFormatter(
             `${specifiedDay.date}`
