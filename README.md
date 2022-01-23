@@ -15,7 +15,9 @@ App Description: Once the user enters either their city, zip code or postcode in
 API: Weather Tracker uses the weather api from https://www.weatherapi.com/ for its data.
 
 API Snippet:
+
 `{
+
 "current": {
 
         "last_updated_epoch": 1642937400,
