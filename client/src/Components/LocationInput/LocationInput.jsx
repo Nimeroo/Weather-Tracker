@@ -3,17 +3,23 @@ import { useState } from "react";
 import { TextField, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { locationURLParse } from "../../Util/locationUrlParse.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const LocationInput = ({ handleLocation, forecast }) => {
+const LocationInput = ({ submitStatus, handleLocation, forecast }) => {
   const navigate = useNavigate();
+  const routeLocation = useLocation();
   const [input, setInput] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [submit, setSubmit] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    if (forecast.status === 200 && input) {
+    if (routeLocation.pathname === "/main") {
+      return false;
+    } else if (
+      routeLocation.pathname !== "/main" &&
+      forecast.status === 200 &&
+      input
+    ) {
       navigate("/main");
     }
   };
@@ -22,6 +28,7 @@ const LocationInput = ({ handleLocation, forecast }) => {
     <div id="form-cont">
       <form
         onSubmit={(e) => {
+          setSubmit(true);
           handleSubmit(e);
         }}
       >
@@ -32,21 +39,22 @@ const LocationInput = ({ handleLocation, forecast }) => {
             setInput(locationURLParse(e.target.value));
           }}
           error={
-            (submitted && forecast.status !== 200) ||
-            (submitted && input === "")
+            (submit && forecast.status !== 200) || (submit && input === "")
           }
           helperText={
-            submitted && input === ""
+            submit && input === ""
               ? "Empty field!"
-              : submitted && forecast.status !== 200
+              : submit && forecast.status !== 200
               ? "That city does not exist"
               : ""
           }
-          label="Enter your location"
+          label="Enter your city, zip code or postcode"
         ></TextField>
-        <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
-          <SearchIcon />
-        </IconButton>
+        {routeLocation.pathname === "/" ? (
+          <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
+            <SearchIcon />
+          </IconButton>
+        ) : null}
       </form>
     </div>
   );

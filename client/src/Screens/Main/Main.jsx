@@ -5,10 +5,11 @@ import LocationInput from "../../Components/LocationInput/LocationInput";
 import WeatherDetails from "../../Components/WeatherDetails/WeatherDetails";
 
 const Main = ({
+  scrollTo,
+  mainReference,
   forecast,
   selectedDay,
   handleIndex,
-  handleSubmit,
   handleLocation,
 }) => {
   if (!forecast) {
@@ -16,15 +17,15 @@ const Main = ({
   }
 
   return (
-    <div id="data-cont">
+    <div id="main-data-cont" ref={mainReference}>
       <LocationInput
-        handleSubmit={handleSubmit}
+        forecast={forecast}
         handleLocation={handleLocation}
       />
       <WeatherDetails weatherInfo={forecast} selectedDay={selectedDay}>
         <SelectedWeather weatherInfo={forecast} selectedDay={selectedDay} />
       </WeatherDetails>
-      <ForecastList weatherInfo={forecast} setSelectedDay={handleIndex} />
+      <ForecastList weatherInfo={forecast} setSelectedDay={handleIndex} scrollTo={scrollTo} mainReference={mainReference}/>
     </div>
   );
 };
