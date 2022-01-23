@@ -4,6 +4,10 @@
 
 App Title: Weather Tracker
 
+[Wireframe](https://wireframe.cc/7UGprf)
+
+[Mobile Wireframe](https://wireframe.cc/Cmhwta)
+
 Languages/Frameworks Used: HTML, CSS, Javascript and React.
 
 App Description: Once the user enters either their city, zip code or postcode into the search bar, Weather Tracker displays the current temperature and weather along with the temperature and weather forecast for the next 2 days.
@@ -38,9 +42,6 @@ API Snippet:
         "wind_kph": 20.2,
         
 }`
-
-[Wireframe](https://wireframe.cc/7UGprf)
-[Mobile Wireframe](https://wireframe.cc/Cmhwta)
 
 
 MVP:
