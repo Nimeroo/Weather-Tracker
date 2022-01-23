@@ -10,6 +10,7 @@ function App() {
   const [forecast, setForecast] = useState({});
   const [location, setLocation] = useState("");
 
+  
   useEffect(() => {
     const fetchForecast = async () => {
       const currentForecast = await getWeatherForecast(location);
@@ -37,7 +38,10 @@ function App() {
             exact
             path="/"
             element={
-              <Landing forecast={forecast} handleLocation={handleLocation} />
+              <Landing
+                forecast={forecast}
+                handleLocation={handleLocation}
+              />
             }
           />
           <Route
