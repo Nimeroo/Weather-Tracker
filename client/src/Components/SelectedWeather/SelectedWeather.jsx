@@ -15,7 +15,7 @@ const SelectedWeather = ({ weatherInfo, selectedDay }) => {
         <h3>{`Feels like: ${currentDay.feelslike_f} °F`}</h3>
       </div>
       <div className="weather-condition-cont">
-        <img src={currentDay.condition.icon}></img>
+        <img alt={currentDay.condition.text} src={currentDay.condition.icon}></img>
         <h3>{currentDay.condition.text}</h3>
       </div>
     </div>
@@ -35,7 +35,7 @@ const SelectedWeather = ({ weatherInfo, selectedDay }) => {
         </div>
       </div>
       <div className="weather-condition-cont">
-        <img src={specifiedDay.day.condition.icon}></img>
+        <img alt={specifiedDay.day.condition.text} src={specifiedDay.day.condition.icon}></img>
         <h3>{specifiedDay.day.condition.text}</h3>
       </div>
     </div>

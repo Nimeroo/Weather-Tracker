@@ -21,7 +21,7 @@ const ForecastList = ({
         }}
       >
         <h3 className="date">{dateFormatter(`${specifiedDay[0].date}`)}</h3>
-        <img src={currentDay.condition.icon}></img>
+        <img alt={currentDay.condition.text} src={currentDay.condition.icon}></img>
         <h4>{`${currentDay.temp_f} F°`}</h4>
       </Paper>
       <Paper
@@ -32,7 +32,7 @@ const ForecastList = ({
         }}
       >
         <h3 className="date">{dateFormatter(`${specifiedDay[1].date}`)}</h3>
-        <img src={specifiedDay[1].day.condition.icon}></img>
+        <img alt={specifiedDay[1].day.condition.text} src={specifiedDay[1].day.condition.icon}></img>
         <h4>{`${specifiedDay[1].day.avgtemp_f} F°`}</h4>
       </Paper>
       <Paper
@@ -43,7 +43,7 @@ const ForecastList = ({
         }}
       >
         <h3 className="date">{dateFormatter(`${specifiedDay[2].date}`)}</h3>
-        <img src={specifiedDay[2].day.condition.icon}></img>
+        <img alt={specifiedDay[2].day.condition.text} src={specifiedDay[2].day.condition.icon}></img>
         <h4>{`${specifiedDay[2].day.avgtemp_f} F°`}</h4>
       </Paper>
     </div>
