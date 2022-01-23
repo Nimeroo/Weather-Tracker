@@ -48,7 +48,7 @@ const LocationInput = ({ submitStatus, handleLocation, forecast }) => {
               ? "That city does not exist"
               : ""
           }
-          label="Enter your location"
+          label="Enter your city, zip code or postcode"
         ></TextField>
         {routeLocation.pathname === "/" ? (
           <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
