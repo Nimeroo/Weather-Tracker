@@ -51,7 +51,7 @@ const SelectedWeather = ({ weatherInfo, selectedDay }) => {
           )}
         </h4>
       </div>
-      {selectedDay == 0 ? presentDay : futureDay}
+      {selectedDay === 0 ? presentDay : futureDay}
     </Paper>
   );
 };
