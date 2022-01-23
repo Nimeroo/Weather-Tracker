@@ -5,15 +5,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import { locationURLParse } from "../../Util/locationUrlParse.js";
 import { useNavigate, useLocation } from "react-router-dom";
 
-const LocationInput = ({
-  submitStatus,
-  handleLocation,
-  forecast,
-}) => {
+const LocationInput = ({ submitStatus, handleLocation, forecast }) => {
   const navigate = useNavigate();
   const routeLocation = useLocation();
   const [input, setInput] = useState("");
-  const [submit, setSubmit] = useState(false)
+  const [submit, setSubmit] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,16 +19,16 @@ const LocationInput = ({
       routeLocation.pathname !== "/main" &&
       forecast.status === 200 &&
       input
-      ) {
-        navigate("/main");
-      }
-    };
-    
-    return (
-      <div id="form-cont">
+    ) {
+      navigate("/main");
+    }
+  };
+
+  return (
+    <div id="form-cont">
       <form
         onSubmit={(e) => {
-          setSubmit(true)
+          setSubmit(true);
           handleSubmit(e);
         }}
       >
@@ -43,8 +39,7 @@ const LocationInput = ({
             setInput(locationURLParse(e.target.value));
           }}
           error={
-            (submit && forecast.status !== 200) ||
-            (submit && input === "")
+            (submit && forecast.status !== 200) || (submit && input === "")
           }
           helperText={
             submit && input === ""
@@ -55,9 +50,11 @@ const LocationInput = ({
           }
           label="Enter your location"
         ></TextField>
-        <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
-          <SearchIcon />
-        </IconButton>
+        {routeLocation.pathname === "/" ? (
+          <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
+            <SearchIcon />
+          </IconButton>
+        ) : null}
       </form>
     </div>
   );
