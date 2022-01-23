@@ -8,7 +8,6 @@ const Main = ({
   forecast,
   selectedDay,
   handleIndex,
-  handleSubmit,
   handleLocation,
 }) => {
   if (!forecast) {
@@ -18,7 +17,7 @@ const Main = ({
   return (
     <div id="data-cont">
       <LocationInput
-        handleSubmit={handleSubmit}
+        forecast={forecast}
         handleLocation={handleLocation}
       />
       <WeatherDetails weatherInfo={forecast} selectedDay={selectedDay}>
