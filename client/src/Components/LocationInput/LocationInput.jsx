@@ -29,14 +29,14 @@ const LocationInput = ({ submitStatus, handleLocation, forecast }) => {
       <form
         onSubmit={(e) => {
           setSubmit(true);
+          handleLocation(input);
           handleSubmit(e);
         }}
       >
         <TextField
           fullWidth
           onChange={(e) => {
-            handleLocation(locationURLParse(e.target.value));
-            setInput(locationURLParse(e.target.value));
+            if (submit) { setInput(locationURLParse(e.target.value)) }
           }}
           error={
             (submit && forecast.status !== 200) || (submit && input === "")
@@ -45,8 +45,8 @@ const LocationInput = ({ submitStatus, handleLocation, forecast }) => {
             submit && input === ""
               ? "Empty field!"
               : submit && forecast.status !== 200
-              ? "That city does not exist"
-              : ""
+                ? "That city does not exist"
+                : ""
           }
           label="Enter your city, zip code or postcode"
         ></TextField>
