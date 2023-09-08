@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import { useState, useEffect, createRef } from "react";
 import { getWeatherForecast } from "./Services/api-config";
 import Main from "./Screens/Main/Main";
-import Landing from "./Screens/Landing/Landing";
 
 function App() {
   const [selectedDay, setSelectedDay] = useState(0);
@@ -18,7 +17,7 @@ function App() {
       if (currentForecast) {
         setForecast(currentForecast);
       }
-    };
+    }; 
     fetchForecast();
   }, [location]);
 
@@ -44,17 +43,7 @@ function App() {
       <div id="main-cont">
         <Routes>
           <Route
-            exact
             path="/"
-            element={
-              <Landing
-                forecast={forecast}
-                handleLocation={handleLocation}
-              />
-            }
-          />
-          <Route
-            path="/main"
             element={
               <Main
                 mainReference={mainReference}

@@ -1,5 +1,5 @@
 import "./LocationInput.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TextField, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { locationURLParse } from "../../Util/locationUrlParse.js";
@@ -10,25 +10,33 @@ const LocationInput = ({ submitStatus, handleLocation, forecast }) => {
   const routeLocation = useLocation();
   const [input, setInput] = useState("");
   const [submit, setSubmit] = useState(false);
+  const [userLocation, setUserLocation] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (routeLocation.pathname === "/main") {
-      return false;
-    } else if (
-      routeLocation.pathname !== "/main" &&
-      forecast.status === 200 &&
-      input
-    ) {
-      navigate("/main");
-    }
+    setSubmit(true);
   };
+
+  const fetchLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserLocation(`${latitude},${longitude}`)
+        },
+        (error) => {
+          console.error('Error getting user location:', error);
+        }
+      );
+    }
+  }
+
+  fetchLocation()
 
   return (
     <div id="form-cont">
       <form
         onSubmit={(e) => {
-          setSubmit(true);
           handleLocation(input);
           handleSubmit(e);
         }}
@@ -36,15 +44,15 @@ const LocationInput = ({ submitStatus, handleLocation, forecast }) => {
         <TextField
           fullWidth
           onChange={(e) => {
-            if (submit) { setInput(locationURLParse(e.target.value)) }
+            setInput(locationURLParse(e.target.value))
           }}
           error={
-            (submit && forecast.status !== 200) || (submit && input === "")
+            (submit && forecast.status === 400) || (submit && input === "" && forecast.status == 400)
           }
           helperText={
-            submit && input === ""
+            submit && input === "" && forecast.status == 400
               ? "Empty field!"
-              : submit && forecast.status !== 200
+              : submit && forecast.status === 400
                 ? "That city does not exist"
                 : ""
           }
