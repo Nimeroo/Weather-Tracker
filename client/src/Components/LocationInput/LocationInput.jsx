@@ -3,35 +3,17 @@ import { useEffect, useState } from "react";
 import { TextField, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { locationURLParse } from "../../Util/locationUrlParse.js";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-const LocationInput = ({ submitStatus, handleLocation, forecast }) => {
-  const navigate = useNavigate();
+const LocationInput = ({ handleLocation, forecast }) => {
   const routeLocation = useLocation();
   const [input, setInput] = useState("");
   const [submit, setSubmit] = useState(false);
-  const [userLocation, setUserLocation] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmit(true);
   };
-
-  const fetchLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setUserLocation(`${latitude},${longitude}`)
-        },
-        (error) => {
-          console.error('Error getting user location:', error);
-        }
-      );
-    }
-  }
-
-  fetchLocation()
 
   return (
     <div id="form-cont">

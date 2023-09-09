@@ -7,17 +7,36 @@ import Main from "./Screens/Main/Main";
 function App() {
   const [selectedDay, setSelectedDay] = useState(0);
   const [forecast, setForecast] = useState({});
+  const [userLocation, setUserLocation] = useState("");
   const [location, setLocation] = useState("");
 
-  const mainReference = createRef()
-  
+  const mainReference = createRef();
+
+  useEffect(() => {
+    const fetchLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            setUserLocation(`${latitude},${longitude}`);
+          },
+          (error) => {
+            console.error("Error getting user location:", error);
+          }
+        );
+      }
+      if (location === "") setLocation(userLocation);
+    };
+    fetchLocation();
+  }, [userLocation]);
+
   useEffect(() => {
     const fetchForecast = async () => {
       const currentForecast = await getWeatherForecast(location);
       if (currentForecast) {
         setForecast(currentForecast);
       }
-    }; 
+    };
     fetchForecast();
   }, [location]);
 
@@ -25,9 +44,9 @@ function App() {
     window.scrollTo({
       left: 0,
       top: ref.current.offsetTop - 40,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
-  }
+  };
 
   const handleIndex = (index) => {
     setSelectedDay(index);
