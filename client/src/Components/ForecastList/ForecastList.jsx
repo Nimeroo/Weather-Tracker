@@ -5,6 +5,7 @@ import { dateFormatter } from "../../Util/dateFormatter";
 const ForecastList = ({
   weatherInfo,
   setSelectedDay,
+  selectedDay,
   scrollTo,
   mainReference,
 }) => {
@@ -13,7 +14,8 @@ const ForecastList = ({
 
   return (
     <div id="forecast-list">
-      <Paper
+      <Paper 
+        id={(selectedDay == 0) ? ("selected-day") : ""}
         elevation={10}
         onClick={() => {
           setSelectedDay(0);
@@ -21,10 +23,12 @@ const ForecastList = ({
         }}
       >
         <h3 className="date">{dateFormatter(`${specifiedDay[0].date}`)}</h3>
+        <h6 id="today">(Today)</h6>
         <img alt={currentDay.condition.text} src={currentDay.condition.icon}></img>
         <h4>{`${currentDay.temp_f} F°`}</h4>
       </Paper>
       <Paper
+        id={(selectedDay == 1) ? ("selected-day") : ""}
         elevation={10}
         onClick={() => {
           setSelectedDay(1);
@@ -36,6 +40,7 @@ const ForecastList = ({
         <h4>{`${specifiedDay[1].day.avgtemp_f} F°`}</h4>
       </Paper>
       <Paper
+        id={(selectedDay == 2) ? ("selected-day") : ""}
         elevation={10}
         onClick={() => {
           setSelectedDay(2);

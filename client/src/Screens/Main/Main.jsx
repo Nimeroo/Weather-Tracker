@@ -40,7 +40,7 @@ const Main = ({
         <><WeatherDetails weatherInfo={forecast} selectedDay={selectedDay}>
           <SelectedWeather weatherInfo={forecast} selectedDay={selectedDay} />
         </WeatherDetails>
-          <ForecastList weatherInfo={forecast} setSelectedDay={handleIndex} scrollTo={scrollTo} mainReference={mainReference} /></>
+          <ForecastList weatherInfo={forecast} selectedDay={selectedDay} setSelectedDay={handleIndex} scrollTo={scrollTo} mainReference={mainReference} /></>
       }
     </div>
   );
