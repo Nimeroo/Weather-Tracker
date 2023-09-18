@@ -23,6 +23,18 @@ root{
   text-align: center;
 }
 
+.header{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.logo{
+  padding: 10px;
+  height: 50px;
+  width: 50px;
+}
+
 #main-cont{
   margin-top: 100px;
   display: flex;

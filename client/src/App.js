@@ -60,7 +60,10 @@ function App() {
 
   return (
     <div className="App">
+      <header className="header">
+      <img className="logo" alt="Logo" src={require("./Cloud-Icon.png")}></img> 
       <h1>Weather Tracker</h1>
+      </header>
       <div id="main-cont">
         <Routes>
           <Route
