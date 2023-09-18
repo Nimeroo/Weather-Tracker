@@ -22,6 +22,10 @@
   margin-top: 0;
 }
 
+#today{
+  margin-top: -20px;
+}
+
 #selected-day{
   background-color: lightsteelblue;
   color: white;
