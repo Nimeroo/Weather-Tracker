@@ -4,10 +4,6 @@
 
 App Title: Weather Tracker
 
-[Wireframe](https://wireframe.cc/7UGprf)
-
-[Mobile Wireframe](https://wireframe.cc/Cmhwta)
-
 Languages/Frameworks Used: HTML, CSS, Javascript and React.
 
 App Description: Once the user's location is grabbed or the user enters their location into the search bar, Weather Tracker displays the current temperature and weather along with the temperature and weather forecast for the next 2 days.
