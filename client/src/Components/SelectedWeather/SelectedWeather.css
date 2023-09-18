@@ -1,7 +1,7 @@
 #main-weather-cont{
     background-color: lightsteelblue;
     width: 40%;
-    height: 20em;
+    height: fit-content;
     padding: 2em;
     margin-top: 2em;
 }
