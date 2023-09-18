@@ -9,6 +9,8 @@ function App() {
   const [forecast, setForecast] = useState({});
   const [userLocation, setUserLocation] = useState("");
   const [location, setLocation] = useState("");
+  const [input, setInput] = useState("");
+  const [submit, setSubmit] = useState(false);
 
   const mainReference = createRef();
 
@@ -71,6 +73,10 @@ function App() {
                 forecast={forecast}
                 selectedDay={selectedDay}
                 handleIndex={handleIndex}
+                setInput={setInput}
+                input={input}
+                setSubmit={setSubmit}
+                submit={submit}
               />
             }
           />
