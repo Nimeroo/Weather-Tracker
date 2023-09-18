@@ -3,15 +3,35 @@ import { Route, Routes } from "react-router-dom";
 import { useState, useEffect, createRef } from "react";
 import { getWeatherForecast } from "./Services/api-config";
 import Main from "./Screens/Main/Main";
-import Landing from "./Screens/Landing/Landing";
 
 function App() {
   const [selectedDay, setSelectedDay] = useState(0);
   const [forecast, setForecast] = useState({});
+  const [userLocation, setUserLocation] = useState("");
   const [location, setLocation] = useState("");
+  const [input, setInput] = useState("");
+  const [submit, setSubmit] = useState(false);
 
-  const mainReference = createRef()
-  
+  const mainReference = createRef();
+
+  useEffect(() => {
+    const fetchLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            setUserLocation(`${latitude},${longitude}`);
+          },
+          (error) => {
+            console.error("Error getting user location:", error);
+          }
+        );
+      }
+      if (location === "") setLocation(userLocation);
+    };
+    fetchLocation();
+  }, [userLocation]);
+
   useEffect(() => {
     const fetchForecast = async () => {
       const currentForecast = await getWeatherForecast(location);
@@ -26,9 +46,9 @@ function App() {
     window.scrollTo({
       left: 0,
       top: ref.current.offsetTop - 40,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
-  }
+  };
 
   const handleIndex = (index) => {
     setSelectedDay(index);
@@ -44,17 +64,7 @@ function App() {
       <div id="main-cont">
         <Routes>
           <Route
-            exact
             path="/"
-            element={
-              <Landing
-                forecast={forecast}
-                handleLocation={handleLocation}
-              />
-            }
-          />
-          <Route
-            path="/main"
             element={
               <Main
                 mainReference={mainReference}
@@ -63,6 +73,10 @@ function App() {
                 forecast={forecast}
                 selectedDay={selectedDay}
                 handleIndex={handleIndex}
+                setInput={setInput}
+                input={input}
+                setSubmit={setSubmit}
+                submit={submit}
               />
             }
           />

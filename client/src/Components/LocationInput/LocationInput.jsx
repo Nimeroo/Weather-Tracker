@@ -1,52 +1,44 @@
 import "./LocationInput.css";
-import { useState } from "react";
 import { TextField, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { locationURLParse } from "../../Util/locationUrlParse.js";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-const LocationInput = ({ submitStatus, handleLocation, forecast }) => {
-  const navigate = useNavigate();
+
+const LocationInput = ({ setInput, input, setSubmit, submit, handleLocation, forecast }) => {
   const routeLocation = useLocation();
-  const [input, setInput] = useState("");
-  const [submit, setSubmit] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (routeLocation.pathname === "/main") {
-      return false;
-    } else if (
-      routeLocation.pathname !== "/main" &&
-      forecast.status === 200 &&
-      input
-    ) {
-      navigate("/main");
-    }
+    setSubmit(true);
   };
 
   return (
     <div id="form-cont">
       <form
         onSubmit={(e) => {
-          setSubmit(true);
           handleSubmit(e);
+          handleLocation(locationURLParse(input));
         }}
       >
         <TextField
           fullWidth
+          autoComplete="off"
           onChange={(e) => {
-            handleLocation(locationURLParse(e.target.value));
-            setInput(locationURLParse(e.target.value));
-          }}
+            setSubmit(false)
+            setInput(e.target.value)
+          }
+          }
+          onFocus={() => setSubmit(false)}
           error={
-            (submit && forecast.status !== 200) || (submit && input === "")
+            (submit && forecast.status === 400) || (submit && input === "" && forecast.status == 400)
           }
           helperText={
-            submit && input === ""
+            submit && input === "" && forecast.status == 400
               ? "Empty field!"
-              : submit && forecast.status !== 200
-              ? "That city does not exist"
-              : ""
+              : submit && forecast.status === 400
+                ? "That city does not exist"
+                : ""
           }
           label="Enter your city, zip code or postcode"
         ></TextField>
@@ -56,6 +48,7 @@ const LocationInput = ({ submitStatus, handleLocation, forecast }) => {
           </IconButton>
         ) : null}
       </form>
+
     </div>
   );
 };
